@@ -1,0 +1,67 @@
+# 两阶段训练配置文件
+# 第一阶段：基础模型训练 (model.py)
+# 第二阶段：修正网络训练 (辅助数据)
+
+# 基础配置
+experiment_name: "two_stage_bmstf_gan"
+patience: 20
+dataset_path: './data'
+
+# 数据参数
+patch_size: 128
+stride: 64
+batch_size: 32  # 可以使用较大的批次，因为模型相对简单
+learning_rate: 0.0001  # 基础模型使用标准学习率
+lr_patience: 5
+lr_decay_factor: 0.7
+min_lr: 0.00000001
+dims: 32
+
+# 优化器参数
+beta1: 0.0
+beta2: 0.9
+num_workers: 4
+min_delta: 0.000001
+
+# 路径配置
+log_dir: './logs'
+checkpoint_dir: './checkpoints'
+
+# GAN参数
+lambda_gan: 0.01
+
+# 模型架构标志 (第一阶段：基础模型)
+use_cafd: true
+use_cvfd: true
+use_twoway: true
+
+# 多模态数据使用标志 (第二阶段会用到)
+use_dem: true
+use_water_vapor: true
+use_longwave_radiation: true
+
+# 训练阶段参数
+# 第一阶段：基础模型训练
+base_epochs: 200  # 基础模型训练轮数
+
+# 第二阶段：修正网络训练
+correction_epochs: 120  # 修正网络训练轮数
+correction_learning_rate: 0.0005  # 修正网络学习率（较高，因为网络小）
+correction_batch_size: 32  # 修正网络批次大小
+
+# 第三阶段：联合微调
+joint_epochs: 50  # 联合微调轮数
+joint_learning_rate: 0.00005  # 联合微调学习率（较低）
+
+# 修正网络特定参数
+correction_scale_init: 5.0  # 初始修正幅度 (Kelvin)
+regularization_weight: 0.1  # 修正量正则化权重
+
+# 早停参数
+early_stopping_patience: 20
+early_stopping_min_delta: 0.0001
+
+# 日志参数
+log_level: "INFO"
+log_to_file: true
+log_to_console: true
