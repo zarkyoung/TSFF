@@ -9,6 +9,12 @@ __pycache__/
 build/
 dist/
 
+*.tif
+*.hdf
+*.nc
+*.csv
+*.npy
+
 # Virtual envs
 .venv/
 venv/
