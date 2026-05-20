@@ -15,6 +15,10 @@ dist/
 *.csv
 *.npy
 
+*.pth
+*.pt
+*.h5
+
 # Virtual envs
 .venv/
 venv/
