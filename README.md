@@ -23,7 +23,7 @@ TSFF (Two-Stage Spatiotemporal Fusion Framework) fuses **ERA5-Land** and **MODIS
 ## Repository Structure
 
 ```
-BMSTF-GAN_correction3/
+TSFF/
 ├── main_correction.py          # Entry point: orchestrates the staged training
 ├── trainer.py                  # BMSTF-GAN trainer (Stage 1)
 ├── trainer_correction.py       # LST-CorrNet / joint trainers (Stage 2 / 3)
@@ -50,7 +50,7 @@ BMSTF-GAN_correction3/
 A minimal install:
 
 ```bash
-pip install torch torchvision torchmetrics numpy pyyaml matplotlib
+pip install torch torchvision torchmetrics numpy pyyaml
 ```
 
 ---
